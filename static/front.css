@@ -1,0 +1,85 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set the background only on the body */
+body,html {
+    height: 100%;
+    background-image: url('/static/back.png'); /* Replace with your actual image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Flex", serif;
+}
+
+/* Main heading */
+h1 {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 40px;
+    color: #272525;
+}
+
+/* Recipe container in the center */
+.recipe-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    padding: 20px;
+    margin: 40px auto;
+    border-radius: 10px;
+    max-width: 1000px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Recipe grid */
+ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 recipes per row */
+    gap: 20px; /* Spacing between recipes */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Recipe item styling */
+li {
+    padding: 10px;
+    border: 1px solid black; /* Black border for each recipe */
+    border-radius: 8px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Subtle background for individual items */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+li:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Recipe image */
+li img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Recipe details link */
+a {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #333;
+}

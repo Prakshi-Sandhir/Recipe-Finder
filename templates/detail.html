@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/detail.css">
+    <title>{{ meal.get('strMeal', 'Unknown Meal') }} - Details</title>
+         
+</head>
+<body>
+    <!-- Main Dish Title Section -->
+    <h1 class="dish-title">
+        {{ meal.get('strMeal', 'Unknown Meal') }} <span class="dish-category" style="font-family: 'Amatic SC', cursive;">({{ meal.get('strCategory', 'Unknown') }})</span>
+    </h1>
+    
+    <!-- Dish Area Info Section -->
+     <div class="Info">
+    <h3 class="dish-area">🌏 Origin Info: <span class="amatic-font">{{ meal.get('strArea', 'Unknown') }}</span> </h3>
+    </div>
+    
+    <!-- Dish Image & Summary Section -->
+    <div class="image-summary-container">
+        <!-- Dish Image Section -->
+        <div class="dish-image-container">
+            {% if meal.get('strMealThumb') %}
+                <img src="{{ meal['strMealThumb'] }}" alt="{{ meal['strMeal'] }}">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+        </div>
+        <!-- Dish Summary Section -->
+        <div class="dish-summary">
+            <h2>📝 Dish Summary</h2>
+            <p class="amatic-font">{{ summary }}</p>
+        </div>
+    </div>
+      <!-- Ingredients Section -->
+      <div class="ingredients-section">
+        <h2 class="fun-heading">🍴 Ingredients List 🍳</h2>
+        <ul>
+            {% for i in range(1, 21) %}
+                {% if meal.get('strIngredient' ~ i) and meal.get('strMeasure' ~ i) %}
+                    <li>✨{{ meal['strIngredient' ~ i] }} - {{ meal['strMeasure' ~ i] }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+   
+    
+   
+    
+    <!-- Instructions Section -->
+    <div class="instructions-section">
+        <h2 class="fun-heading">🥘 How to Cook? 🍽️</h2>
+        {% if meal.get('strInstructions') %}
+            <ol>
+                {% for line in meal['strInstructions'].split('. ') %}
+                    {% if line %}
+                        <li>{{ line }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        {% else %}
+            <p>Sorry! Instructions are unavailable at the moment. 😢</p>
+        {% endif %}
+    </div>
+    
+    <div class="flexx">
+        <!-- Tags Section -->
+        <div class="tags-section">
+            <h2 class="fun-heading">✨ Recipe Tags</h2>
+            <div class="tagg">
+                <p> {{ meal.get('strTags', 'No tags available.') }}</p>
+            </div>
+        </div>
+    
+        <!-- Ratings & Review Section -->
+        <div class="ratings-section">
+            <h2 class="fun-heading">  📝Ratings & Reviews </h2>
+            <div class="tagg">
+                <p><strong>Rating:</strong> {{ rating }}</p>
+                <p><strong>Review:</strong> {{ review }}</p>
+            </div>
+        </div>
+    
+        <!-- Nutritional Information Section -->
+        <div class="nutritional-section">
+            <h2 class="fun-heading"> 🥗Nutritional Information </h2>
+            <div class="tagg">
+                <ul>
+                    <li>⚖️ Calories: {{ calories }}</li>
+                    <li>🍳 Fat: {{ fat }}</li>
+                    <li>🍗 Protein: {{ protein }}</li>
+                    <li>🍞 Carbohydrates: {{ carbs }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+  
+
+    <!-- Video Section -->
+    <div class="video-section">
+        <h2 class="fun-heading">🎥 Learn the Dish - Cooking Tutorial 🍳</h2>
+        {% if meal.get('strYoutube') %}
+        <div class="link">
+            <a href="{{ meal['strYoutube'] }}" target="_blank">🎥 Watch the Video Now 🍽️</a>
+            {% else %}
+                <p>Sorry! No video available at the moment. 😢</p>
+            {% endif %}
+
+        </div>
+        
+    </div>
+    
+    <!-- Back Button Section -->
+    <a href="/" class="back-btn">🔙 Back to Search</a>
+</body>
+</html>
